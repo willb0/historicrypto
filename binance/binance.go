@@ -32,7 +32,7 @@ func Binance(ticker, interval string, number_of_days int, cols []string) datafra
 	return df
 }
 
-func GetCsvFromUrl(url string) dataframe.DataFrame {
+func GetCsvFromUrl(url string,) dataframe.DataFrame {
 	println(url)
 	resp, err := http.Get(url)
 	if err != nil {
@@ -53,9 +53,8 @@ func GetCsvFromUrl(url string) dataframe.DataFrame {
 		if err != nil {
 			log.Fatal(err)
 		}
-		if err != nil {
-			log.Fatal(err)
-		}
+		zipFile.Open()
+
 		names := dataframe.Names("Open time",
 			"Open",
 			"High",
