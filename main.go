@@ -20,9 +20,10 @@ func main() {
 
 	fmt.Printf("features: %v\n", features)
 	res := binance.Binance(*token, *interval, *number_of_days, []string{"Close", "Close Time"})
-	println("binanced")
+	fmt.Printf("starting to scrape data\n")
 	now := time.Now()
-	f, err := os.Create(fmt.Sprintf("%s-%s-%dd-%d_%d.csv", *token, *interval, *number_of_days, now.Month(), now.Day()))
+	filename := fmt.Sprintf("%s-%s-%dd-%d_%d.csv", *token, *interval, *number_of_days, now.Month(), now.Day())
+	f, err := os.Create(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
